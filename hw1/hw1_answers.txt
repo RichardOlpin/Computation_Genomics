@@ -1,0 +1,51 @@
+Question 1
+	mkdir homework-01
+	cd homework-01
+Question 2
+	grep -v '#' human.genes.gtf | wc -l
+		There are 2575494 lines excluding the header lines
+Question 3
+	grep 'transcript_biotype "protein_coding"' human.genes.gtf | wc -l
+		1759716
+Question 4
+	grep 'transcript_biotype "protein_coding"' human.genes.gtf | grep "exon" | wc -l
+		1487953
+Question 5
+	grep 'transcript_biotype "protein_coding"' human.genes.gtf | grep "exon" | grep -w "+" | wc -l
+		754268
+Question 6
+	grep 'transcript_biotype "protein_coding"' human.genes.gtf | grep "exon" | grep "-" | wc -l
+		733685
+Question 7
+	for i in {1..22}; do grep -w ^$i human.genes.gtf | grep -w 'transcript_biotype protein_coding" | grep -w "CDS" | wc -l; done
+		chr1: 60734
+		chr2: 49472
+		chr3: 39108
+		chr4: 25182
+		chr5: 28032
+		chr6: 30812
+		chr7: 29969
+		chr8: 22257
+		chr9: 24483
+		chr10: 25343
+		chr11: 38824
+		chr12: 38274
+		chr13: 9746
+		chr14: 21624
+		chr15: 23016
+		chr16: 28973
+		chr17: 40132
+		chr18: 10618
+		chr19: 39581
+		chr20: 14494
+		chr21: 6901
+		chr22: 13563
+
+	for i in {X,Y}; do grep -w ^$i human.genes.gtf | grep -w 'transcript_biotype "protein_coding"' | grep -w "CDS" | wc -l; done
+	 	chrX: 21671
+		chrY: 1517
+
+Question 8
+	I would use the same command we have been using to get the protein coding genes
+		grep 'transcript_biotype "protein_coding"'
+	Next I would sort the uniq names from feature column so I could get the unique gene IDs. If we really wanted to get fancy we could also grab the unique variations.
